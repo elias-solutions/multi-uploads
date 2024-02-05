@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MultiUpload\API.csproj" />
+    <ProjectReference Include="..\MultiUpload\Api.csproj" />
   </ItemGroup>
 
 </Project>
