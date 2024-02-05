@@ -1,8 +1,8 @@
-using API.Models;
+using Api.Models;
 using Asp.Versioning;
 using Microsoft.AspNetCore.Mvc;
 
-namespace API.Controllers.V1;
+namespace Api.Controllers.V1;
 
 [ApiController]
 [ApiVersion("1.0")]

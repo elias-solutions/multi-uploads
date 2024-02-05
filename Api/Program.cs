@@ -1,4 +1,4 @@
-using API;
+namespace Api;
 
 public class Program
 {

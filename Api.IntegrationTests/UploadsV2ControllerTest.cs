@@ -1,7 +1,6 @@
 using System.Net;
 using System.Net.Http.Json;
-using API;
-using API.Models;
+using Api.Models;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Xunit;

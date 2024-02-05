@@ -1,7 +1,7 @@
 using Asp.Versioning;
 using Asp.Versioning.ApiExplorer;
 
-namespace API;
+namespace Api;
 
 public class Startup
 {

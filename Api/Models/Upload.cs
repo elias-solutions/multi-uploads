@@ -1,4 +1,4 @@
-﻿namespace API.Models
+﻿namespace Api.Models
 {
     public record UploadV1(string FirstName, string LastName, IEnumerable<Document> Documents);
 
