@@ -1,0 +1,6 @@
+@MultiUpload_HostAddress = http://localhost:5038
+
+GET {{MultiUpload_HostAddress}}/swagger/
+Accept: application/json
+
+###
