@@ -1,4 +1,4 @@
-using Api.Models;
+using Api.Models.V2;
 using Asp.Versioning;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,22 +10,22 @@ namespace Api.Controllers.V2;
 public class UploadsController : ControllerBase
 {
     [HttpPost]
-    public IActionResult Upload([FromForm] UploadV2 upload)
+    public IActionResult Upload([FromForm] UploadRequestV2 uploadRequest)
     {
-        ArgumentNullException.ThrowIfNull(upload);
+        ArgumentNullException.ThrowIfNull(uploadRequest);
 
-        var uploadResponse = new UploadV2Response(upload.FirstName, upload.LastName, Map(upload.Files));
+        var uploadResponse = new UploadResponseV2(uploadRequest.FirstName, uploadRequest.LastName, Map(uploadRequest.Files));
         return Ok(uploadResponse);
     }
 
-    private IEnumerable<Document> Map(IEnumerable<IFormFile> files)
+    private IEnumerable<DocumentResponseV2> Map(IEnumerable<IFormFile> files)
     {
         foreach (var file in files)
         {
             using var stream = file.OpenReadStream();
             var ms = new MemoryStream();
             stream.CopyTo(ms);
-            yield return new Document(file.Name, file.FileName, file.ContentType, ms.ToArray());
+            yield return new DocumentResponseV2(file.Name, file.FileName, file.ContentType, ms.ToArray());
         }
     }
 }

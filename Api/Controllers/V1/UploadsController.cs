@@ -1,4 +1,4 @@
-using Api.Models;
+using Api.Models.V1;
 using Asp.Versioning;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,9 +10,9 @@ namespace Api.Controllers.V1;
 public class UploadsController : ControllerBase
 {
     [HttpPost]
-    public IActionResult Upload([FromBody] UploadV1 upload)
+    public IActionResult Upload([FromBody] UploadRequestV1 uploadRequest)
     {
-        ArgumentNullException.ThrowIfNull(upload);
-        return Ok(upload);
+        ArgumentNullException.ThrowIfNull(uploadRequest);
+        return Ok(uploadRequest);
     }
 }
