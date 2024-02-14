@@ -21,15 +21,15 @@ public class UploadsV2ControllerTest : WebApplicationFactory<Startup>
     {
         var multipartContent = new MultipartFormDataContent();
         multipartContent.Add(new ByteArrayContent(new byte[] { 1, 2, 3, 4 }), "Files", "FileOne.txt");
-        multipartContent.Add(new ByteArrayContent(new byte[] { 4, 3, 2, 1}), "Files", "FileTwp.txt");
+        multipartContent.Add(new ByteArrayContent(new byte[] { 4, 3, 2, 1 }), "Files", "FileTwp.txt");
         multipartContent.Add(new StringContent("Clark"), nameof(UploadRequestV2.FirstName));
         multipartContent.Add(new StringContent("Kent"), nameof(UploadRequestV2.LastName));
 
         var request = new HttpRequestMessage(HttpMethod.Post, new Uri("/api/v2/uploads", UriKind.Relative));
         request.Content = multipartContent;
-        var result = await _client.SendAsync(request);
-        result.StatusCode.Should().Be(HttpStatusCode.OK);
-        var upload = await result.Content.ReadFromJsonAsync<UploadResponseV2>();
+        var response = await _client.SendAsync(request);
+        response.StatusCode.Should().Be(HttpStatusCode.OK);
+        var upload = await response.Content.ReadFromJsonAsync<UploadResponseV2>();
 
         upload!.FirstName.Should().Be("Clark");
         upload.LastName.Should().Be("Kent");

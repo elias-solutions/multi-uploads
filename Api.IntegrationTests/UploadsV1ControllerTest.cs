@@ -28,9 +28,9 @@ public class UploadsV1ControllerTest : WebApplicationFactory<Startup>
 
         var request = new HttpRequestMessage(HttpMethod.Post, new Uri("/api/v1/uploads", UriKind.Relative));
         request.Content = stringContent;
-        var result = await _client.SendAsync(request);
-        result.StatusCode.Should().Be(HttpStatusCode.OK);
-        var upload = await result.Content.ReadFromJsonAsync<UploadRequestV1>();
+        var response = await _client.SendAsync(request);
+        response.StatusCode.Should().Be(HttpStatusCode.OK);
+        var upload = await response.Content.ReadFromJsonAsync<UploadRequestV1>();
 
         upload.Should().BeEquivalentTo(expected);
     }
